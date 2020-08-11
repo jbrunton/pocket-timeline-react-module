@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, FlatList } from 'react-native';
 import { getTimelines } from '../api'
 import type {Timeline} from '../models'
 import { styles } from "../../ui/styles";
@@ -17,7 +17,7 @@ export function TimelinesScreen() {
     <FlatList
       style={styles.body}
       data={timelines}
-      keyExtractor={({ id }, index) => id?.toString()}
+      keyExtractor={({ id }) => id?.toString()}
       renderItem={({ item }) => (
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>{item.title}</Text>
