@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-export const WelcomeScreen = (props) => {
+export const WelcomeScreen = () => {
   return <Text>Hello, World!</Text>;
 }
