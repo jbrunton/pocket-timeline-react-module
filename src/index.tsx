@@ -1,4 +1,5 @@
 import { NativeModules } from 'react-native';
+//import { getTimelines } from './timelines/api';
 
 type PocketTimelineReactModuleType = {
   multiply(a: number, b: number): Promise<number>;
@@ -7,3 +8,12 @@ type PocketTimelineReactModuleType = {
 const { PocketTimelineReactModule } = NativeModules;
 
 export default PocketTimelineReactModule as PocketTimelineReactModuleType;
+
+//getTimelines().then(console.log)
+
+//export { getTimelines } from './timelines/api'
+
+export { hello } from './test'
+
+export { Timeline, Event } from './timelines/models'
+export { getTimelines } from './timelines/api'
