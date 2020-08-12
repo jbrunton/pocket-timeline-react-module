@@ -4,4 +4,4 @@ import { name as appName } from './app.json';
 import {TimelinesScreen} from 'pocket-timeline-react-module'
 
 
-AppRegistry.registerComponent(appName, () => TimelinesScreen);
+AppRegistry.registerComponent('TimelinesApp', () => TimelinesScreen);
