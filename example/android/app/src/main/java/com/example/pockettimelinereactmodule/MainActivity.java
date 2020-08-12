@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(this);
 
     if (savedInstanceState == null) {
-      showFragment(new TimelinesFragment());
+      showFragment(new WelcomeFragment());
     }
   }
 
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
         showFragment(new TimelinesFragment());
         return true;
       case R.id.navigation_welcome:
+        showFragment(new WelcomeFragment());
         return true;
       default:
         return false;
