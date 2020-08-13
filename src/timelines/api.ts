@@ -14,6 +14,7 @@ export async function getTimelines(): Promise<Array<Timeline>> {
       ios: 'http://localhost:3000/timelines.json',
       android: 'http://10.0.2.2:3000/timelines.json'
     }) as string
+    console.log(`Loading timelines from ${url}`);
     const response = await fetch(url);
     const json = await response.json();
     return json;
