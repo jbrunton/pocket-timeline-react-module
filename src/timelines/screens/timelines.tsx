@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View, Text, SafeAreaView, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, FlatList, TouchableWithoutFeedback } from 'react-native';
 import { getTimelines } from '../api'
 import type {Timeline} from '../models'
 import { styles } from "../../ui/styles";
 
-export function TimelinesScreen() {
+export function TimelinesScreen({ navigation }) {
   const [timelines, setTimelines] = React.useState<Array<Timeline>>();
 
   React.useEffect(() => {
@@ -19,12 +19,17 @@ export function TimelinesScreen() {
       data={timelines}
       keyExtractor={({ id }) => id?.toString()}
       renderItem={({ item }) => (
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>{item.title}</Text>
-          <Text style={styles.sectionDescription}>
-            {item.description}
-          </Text>
-        </View>
+        <TouchableWithoutFeedback onPress={() =>
+          //console.log('touched')
+          navigation.navigate('Timeline', { timelineId: item.id })
+        }>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>{item.title}</Text>
+            <Text style={styles.sectionDescription}>
+              {item.description}
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
       )}
     />
   </SafeAreaView>;

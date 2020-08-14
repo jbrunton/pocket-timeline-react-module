@@ -24,10 +24,13 @@ export async function getTimelines(): Promise<Array<Timeline>> {
   }
 }
 
-// export async function getTimeline(id: string): Promise<Timeline> {
-//   const response = await fetch(
-//     `http://10.0.2.2:3000/timelines/${id}.json`
-//   );
-//   const json = await response.json();
-//   return json;
-// }
+export async function getTimeline(id: string): Promise<Timeline> {
+  const url = Platform.select({
+    ios: `http://localhost:3000/timelines/${id}.json`,
+    android: `http://10.0.2.2:3000/timelines/${id}.json`
+  }) as string
+  console.log(`Loading timeline from ${url}`);
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}

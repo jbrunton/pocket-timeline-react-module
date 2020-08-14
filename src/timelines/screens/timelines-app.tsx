@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TimelinesScreen } from './timelines';
+import { TimelineScreen } from './timeline';
 
 // function HomeScreen() {
 //   return (
@@ -26,10 +27,9 @@ const Stack = createStackNavigator();
 export function TimelinesApp() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Timelines" screenOptions={({ route, navigation }) => ({
-        headerShown: false
-      })}>
+      <Stack.Navigator initialRouteName="Timelines">
         <Stack.Screen name="Timelines" component={TimelinesScreen} />
+        <Stack.Screen name="Timeline" component={TimelineScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
