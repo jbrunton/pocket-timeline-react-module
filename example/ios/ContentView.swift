@@ -36,6 +36,18 @@ import SwiftUI
 //    }
 //}
 
+struct WelcomeReactApp: UIViewRepresentable {
+    //typealias UIViewControllerType = UIView
+    
+    func makeUIView(context: Context) -> UIView {
+        return ReactApps.createWelcomeApp()
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        
+    }
+}
+
 struct ContentView: View {
     @State private var selection = 0
     //@ObservedObject var fetcher = TimelineFetcher()
@@ -51,7 +63,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
-            Text("Welcome")
+            WelcomeReactApp()
                 .font(.title)
                 .tabItem {
                     VStack {
