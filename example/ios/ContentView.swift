@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-//import React
 
 //struct TimelinesView : View {
 //    @ObservedObject var fetcher = TimelineFetcher()
@@ -36,11 +35,16 @@ import SwiftUI
 //    }
 //}
 
-struct WelcomeReactApp: UIViewRepresentable {
-    //typealias UIViewControllerType = UIView
-    
+struct WelcomeReactApp: UIViewRepresentable {    
     func makeUIView(context: Context) -> UIView {
-        return ReactApps.createWelcomeApp()
+      let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")
+      let rootView = RCTRootView(
+          bundleURL: jsCodeLocation!,
+          moduleName: "WelcomeApp",
+          initialProperties: nil,
+          launchOptions: nil
+      )
+      return rootView
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
