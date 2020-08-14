@@ -52,27 +52,44 @@ struct WelcomeReactApp: UIViewRepresentable {
     }
 }
 
+struct TimelinesReactApp: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+      let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")
+      let rootView = RCTRootView(
+          bundleURL: jsCodeLocation!,
+          moduleName: "TimelinesApp",
+          initialProperties: nil,
+          launchOptions: nil
+      )
+      return rootView
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        
+    }
+}
+
 struct ContentView: View {
     @State private var selection = 0
     //@ObservedObject var fetcher = TimelineFetcher()
  
     var body: some View {
         TabView(selection: $selection){
-            Text("Hi")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("First")
-                    }
-                }
-                .tag(0)
             WelcomeReactApp()
                 .font(.title)
                 .tabItem {
                     VStack {
+                        Image("first")
+                        Text("Welcome")
+                    }
+                }
+                .tag(0)
+            TimelinesReactApp()
+                .font(.title)
+                .tabItem {
+                    VStack {
                         Image("second")
-                        Text("Second")
+                        Text("Timelines")
                     }
                 }
                 .tag(1)
